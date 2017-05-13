@@ -14,3 +14,23 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/home', function () {
+    return view('home');
+});
+
+Route::get('/profile', function () {
+    return view('profile');
+});
+
+Route::get('/profile/edit', function () {
+    return view('edit-profile');
+});
+
+Route::get('/forgot-password', function () {
+    return view('forgot-password');
+});
+
+Route::get('/reset-password', function () {
+    return view('reset-password');
+});

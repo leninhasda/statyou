@@ -7,3 +7,50 @@
 
 // Bootstrap
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "node_modules/font-awesome/css/font-awesome";
+
+@import "colors";
+@import "layout";
+
+/*commend added*/
+
+body,
+.welcome {
+    background-image: url(https://unsplash.it/1800/1600?image=1006);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 100% 25%;
+}
+
+$stat-block-img-width: 80px;
+.stat-block {
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .15);
+    .pull-left {
+        width: $stat-block-img-width;
+        min-width: $stat-block-img-width;
+        max-width: $stat-block-img-width;
+    }
+    .pull-right {
+        width: calc(100% - #{$stat-block-img-width});
+        min-width: calc(100% - #{$stat-block-img-width});
+        max-width: calc(100% - #{$stat-block-img-width});
+    }
+    .author-info {
+        h3 {
+            margin: 0 0 7px;
+            padding: 0;
+            font-size: 18px;
+            font-weight: bold;
+
+        }
+    }
+    .content {
+        p {
+            margin: 0;
+            padding: 0;
+        }
+    }
+    .footer {
+
+    }
+}
