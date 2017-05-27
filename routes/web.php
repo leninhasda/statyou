@@ -11,26 +11,33 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// done
+Auth::routes();
 
-Route::get('/home', function () {
-    return view('home');
-});
+// done
+Route::get('/', 'HomeController@welcome')
+    ->name('welcome');
 
-Route::get('/profile', function () {
-    return view('profile');
-});
+//
+Route::get('/home', 'ProfileController@home')
+    ->name('home');
 
-Route::get('/profile/edit', function () {
-    return view('edit-profile');
-});
+Route::get('/profile', 'ProfileController@me')
+    ->name('user.profile');
 
-Route::get('/forgot-password', function () {
-    return view('forgot-password');
-});
+Route::get('/profile/edit', 'ProfileController@edit')
+    ->name('user.profile.edit');
 
-Route::get('/reset-password', function () {
-    return view('reset-password');
-});
+Route::put('/profile/edit', 'ProfileController@update')
+    ->name('user.profile.update');
+
+// other users profile
+Route::get('/profile/{username}', 'ProfileController@user')
+    ->name('user.profile.user');
+
+Route::post('/status', 'StatusController@create')
+    ->name('status.create');
+Route::patch('/status', 'StatusController@update')
+    ->name('status.update');
+Route::delete('/status', 'StatusController@delete')
+    ->name('status.delete');

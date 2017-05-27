@@ -14,15 +14,45 @@
 
 /*commend added*/
 
-body,
-.welcome {
+// body,
+body {
+    background: #f0f0f0;
+}
+.welcome-layout {
     background-image: url(https://unsplash.it/1800/1600?image=1006);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 100% 25%;
 }
+.main-layout {
+    padding-top: 80px;
+}
 
-$stat-block-img-width: 80px;
+// global
+.panel {
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+}
+.flow-text {
+    font-size: 24px;
+}
+.img-circle {
+    border: 1px solid #ccc;
+}
+
+// main menu
+.main-menu {
+    li {
+        a {
+            color: #b2ebf2 !important;
+            cursor: pointer;
+            &:hover {
+                color: #fff !important;
+            }
+        }
+    }
+}
+
+$stat-block-img-width: 60px;
 .stat-block {
     box-shadow: 0 1px 1px rgba(0, 0, 0, .15);
     .pull-left {
@@ -47,10 +77,17 @@ $stat-block-img-width: 80px;
     .content {
         p {
             margin: 0;
-            padding: 0;
+            padding: 5px 0;
+            span {
+                font-style: italic;
+                color: #777;
+                font-size: 13px;
+                &.pull-right {
+                    width: auto !important;
+                    min-width: auto !important;
+                    max-width: auto !important;
+                }
+            }
         }
-    }
-    .footer {
-
     }
 }

@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.main')
 
 @section('content')
     <section>
@@ -10,9 +10,9 @@
                     </div>
                     <div class="col-sm-8">
                         <a href="{{url('profile/edit')}}" class="btn btn-primary pull-right">Edit</a>
-                        <h3 class="name">Dr. John Doe</h3>
-                        <p class="bio">nerdy, geek, tech shavy</p>
-                        <p class="email"><i class="fa fa-github fa-lg"></i> john@doe.com</p>
+                        <h3 class="name">{{ $user->name }}</h3>
+                        <p class="bio">{{ $user->email }}</p>
+                        <p class="email"><i class="fa fa-envelope fa-lg"></i> {{ $user->email }}</p>
 
                     </div>
                 </div>

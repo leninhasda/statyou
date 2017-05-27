@@ -2,7 +2,10 @@ $colors:(white: #fff, red: #f44336, pink: #e91e63, purple: #9c27b0, deep-purple:
 
 @each $color, $value in $colors {
     .#{$color} {
-        color: $value;
+        background-color: $value !important;
+    }
+    .#{$color}-text {
+        color: $value !important;
     }
 }
 

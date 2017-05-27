@@ -1,0 +1,14 @@
+Build a small Laravel project with following features -:
+ ✔ A user authentication system that includes login, register, forgot password and reset password @done (17-05-27 07:37)
+ ✔ A status system where logged in users can have their own profile page where they can post status. @done (17-05-27 07:38)
+   ✔ Status can not have more that 140 characters. @done (17-05-27 07:38)
+   ☐ Status can be private or public. Private status can be viewed by logged in users and public status can be viewed publicly.
+   ☐ Profile page will display the list of statues that user made.
+ ☐ Profile page must have a pagination for the list of status.
+   ☐ This pagination will show the dates instead of page numbers. Eg. "1 Apr '17", "2 Apr '17", "4 Apr '17”.
+   ☐ The profile page with show the first page of the pagination by default.
+   ☐ The pagination button will show the status of that date (pagination button) on click.
+   ☐ If there is not status in a particular date for a particular user then that date will not be shown in the pagination.
+
+Bonus Task: (Optional) :
+ ☐ Create an API to serve user's public statuses in paginated format.
