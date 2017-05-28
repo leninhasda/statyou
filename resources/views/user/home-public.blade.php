@@ -26,26 +26,11 @@
                 </div><!-- /.stat-block -->
             @endforeach
 
-            <nav aria-label="Page navigation" class="text-center">
-                <ul class="pagination">
-                    <li>
-                      <a href="#" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                      </a>
-                    </li>
-                    <li><a href="#">1 Apr '17</a></li>
-                    <li><a href="#">2 Apr '17</a></li>
-                    <li><a href="#">3 Apr '17</a></li>
-                    <li>
-                      <a href="#" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                      </a>
-                    </li>
-                </ul>
-            </nav><!-- /pagination -->
-
         @endif
     </section><!-- /.row -->
+
+
+{{ $paginator->make() }}
 
 @endsection
 

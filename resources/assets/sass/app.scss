@@ -38,6 +38,18 @@ body {
 .img-circle {
     border: 1px solid #ccc;
 }
+.pager {
+    li {
+        &.active {
+            display: inline-block;
+            padding: 5px 14px;
+            background-color: #fafafa;
+            border: 1px solid #ddd;
+            border-radius: 15px;
+            cursor: not-allowed;
+        }
+    }
+}
 
 // main menu
 .main-menu {

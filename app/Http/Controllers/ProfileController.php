@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Status;
 use App\User;
+use App\Helpers\Paginator;
 use Auth;
 use Hash;
 use Validator;
@@ -92,9 +93,10 @@ class ProfileController extends Controller
     {
         $user = User::where('username', $username)->first();
         // dd($user);
-        $statuses = $user->publicStatuses()->orderBy('created_at', 'desc')->get();
+        $statuses = $user->statuses()->orderBy('created_at', 'desc')->get();
+        $paginator = new Paginator(['today', 'yesterday', '3 days ago'], 'yesterday');
 
-        return view('user.home-public', compact('statuses', 'user'));
+        return view('user.home-public', compact('statuses', 'user', 'paginator'));
     }
 
     // public function index($username)
