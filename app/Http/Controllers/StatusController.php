@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Status;
 
 class StatusController extends Controller
 {
@@ -18,7 +19,6 @@ class StatusController extends Controller
 
     public function create()
     {
-        // dd('test');
         $this->validate(request(), [
             'content' => 'required|max:140',
             'type' => 'required|boolean|max:1'
@@ -31,9 +31,9 @@ class StatusController extends Controller
             'content' => request('content'),
             'type' => request('type'),
         ];
-        \App\Status::create($data);
-        // dd($s);
 
-        return redirect()->back();
+        Status::create($data);
+
+        return redirect()->route('home');
     }
 }

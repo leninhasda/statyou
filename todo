@@ -11,4 +11,4 @@ Build a small Laravel project with following features -:
    ✔ If there is not status in a particular date for a particular user then that date will not be shown in the pagination. @done (17-05-29 03:47)
 
 Bonus Task: (Optional) :
- ☐ Create an API to serve user's public statuses in paginated format.
+ ✔ Create an API to serve user's public statuses in paginated format. @done (17-05-29 05:21)

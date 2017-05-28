@@ -35,9 +35,11 @@ Route::put('/profile/edit', 'ProfileController@update')
 Route::get('/profile/{username}', 'ProfileController@user')
     ->name('user.profile.user');
 
-Route::post('/status', 'StatusController@create')
+Route::post('/status/create', 'StatusController@create')
     ->name('status.create');
-Route::patch('/status', 'StatusController@update')
-    ->name('status.update');
-Route::delete('/status', 'StatusController@delete')
-    ->name('status.delete');
+
+// api
+Route::group(['prefix' => 'api'], function(){
+    Route::get('/status/{username}', 'ApiController@index')
+        ->name('api.status');
+});
