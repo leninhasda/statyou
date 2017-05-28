@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="row">
+    <div class="row content-section">
         <div class="col-md-6">
             <p class="flow-text white-text">Just fill the form to sign up!</p>
         </div>
@@ -15,11 +15,11 @@
                         {{ csrf_field() }}
 
                         <div class="form-group row">
-                            <div class="col-sm-6">
+                            <div class="col-xs-6">
                                 <label for="first_name" class="hide">First Name</label>
                                 <input type="text" name="first_name" id="first_name" class="form-control" placeholder="First Name">
                             </div>
-                            <div class="col-sm-6">
+                            <div class="col-xs-6">
                                 <label for="last_name" class="hide">Last Name</label>
                                 <input type="text" name="last_name" id="last_name" class="form-control" placeholder="Last Name">
                             </div>

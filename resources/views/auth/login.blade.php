@@ -1,7 +1,7 @@
 @extends('layouts.auth')
 
 @section('content')
-    <div class="row" style="margin-top: 40px;">
+    <div class="row content-section">
         <div class="col-md-6">
             @if (Request::get('action') && 'logout' == Request::get('action'))
                 <p class="flow-text white-text">Be sure to check in again. <br>Have a great day!</p>

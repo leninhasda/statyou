@@ -14,15 +14,27 @@
 
 /*commend added*/
 
-// body,
+// html,body
+html {
+    height: 100%;
+}
 body {
     background: #fafafa;
+    height: 100%;
 }
+
+// layout and footer
 .welcome-layout {
     background-image: url(https://unsplash.it/1800/1600?image=1006);
     background-repeat: no-repeat;
-    background-size: cover;
+    // background-size: cover;
     background-position: 100% 25%;
+    .content-section {
+        margin-top: 40px;
+        .welcome-msg {
+            padding: 20px 20px 0 0;
+        }
+    }
     .site-footer p {
         color: #fafafa !important;
     }
@@ -36,7 +48,7 @@ body {
 
 // global
 .panel {
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
 }
 .flow-text {
     font-size: 24px;
@@ -44,6 +56,8 @@ body {
 .img-circle {
     border: 1px solid #ccc;
 }
+
+// pagination style
 .pager {
     li {
         &.active {
@@ -56,6 +70,8 @@ body {
         }
     }
 }
+
+// error page
 .error404 {
     h1 {
         font-weight: bold;
@@ -75,6 +91,7 @@ body {
     }
 }
 
+// status block
 $stat-block-img-width: 60px;
 .stat-block {
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
@@ -114,3 +131,5 @@ $stat-block-img-width: 60px;
         }
     }
 }
+
+@import "media";

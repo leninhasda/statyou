@@ -1,0 +1,21 @@
+// media query for small devices
+@media (max-width: $screen-sm-max) {
+    .welcome-layout {
+        text-align: center;
+        .content-section {
+            margin-top: 25px;
+            .welcome-msg {
+                padding: 0;
+            }
+            .col-sm-5 {
+                margin-top: 30px;
+            }
+            .form-group .row .col-md-8 {
+                margin-bottom: 15px;
+            }
+        }
+    }
+    .profile-edit {
+        margin-top: 25px;
+    }
+}

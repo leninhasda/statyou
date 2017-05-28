@@ -2,9 +2,9 @@
 
 @section('content')
 
-    <div class="row">
+    <div class="row content-section">
         <div class="col-md-6">
-            <p class="flow-text white">To reset your password enter the email address you signed up with.</p>
+            <p class="flow-text white-text">To reset your password enter the email address you signed up with.</p>
         </div>
         <div class="col-md-6">
             <div class="panel panel-default">

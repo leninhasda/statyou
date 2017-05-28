@@ -8,7 +8,7 @@
                 <div class="row">
                     <div class="col-sm-4">
                         <img src="{{url('images/profile-1.jpg')}}" alt="" class="img-thumbnail">
-                        <form action="#">
+                        <form action="#" class="hide">
                             <label for="" class="btn btn-default btn-avatar">
                                 Change Avatar
                                 <input type="file" name="avatar" id="" class="hide">
@@ -16,7 +16,7 @@
                         </form>
                     </div>
 
-                    <div class="col-sm-8">
+                    <div class="col-sm-8 profile-edit">
 
                         @if (session()->has('msg.level'))
                             <div class="alert alert-{{ session('msg.level') }}">
@@ -37,11 +37,11 @@
                         {{ Form::model($user, ['route' => 'user.profile.update', 'method' => 'PUT']) }}
                             <div class="form-group">
                                 <div class="row">
-                                    <div class="col-sm-6">
+                                    <div class="col-xs-6">
                                         {{ Form::label('first_name', 'First Name') }}
                                         {{ Form::text('first_name', $user->first_name, ['class' => 'form-control']) }}
                                     </div>
-                                    <div class="col-sm-6">
+                                    <div class="col-xs-6">
                                         {{ Form::label('last_name', 'Last Name') }}
                                         {{ Form::text('last_name', $user->last_name, ['class' => 'form-control']) }}
                                     </div>
