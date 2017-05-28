@@ -4,11 +4,11 @@ Build a small Laravel project with following features -:
    ✔ Status can not have more that 140 characters. @done (17-05-27 07:38)
    ✔ Status can be private or public. Private status can be viewed by logged in users and public status can be viewed publicly. @done (17-05-28 04:14)
    ✔ Profile page will display the list of statues that user made. @done (17-05-28 04:14)
- ☐ Profile page must have a pagination for the list of status.
-   ☐ This pagination will show the dates instead of page numbers. Eg. "1 Apr '17", "2 Apr '17", "4 Apr '17”.
-   ☐ The profile page with show the first page of the pagination by default.
-   ☐ The pagination button will show the status of that date (pagination button) on click.
-   ☐ If there is not status in a particular date for a particular user then that date will not be shown in the pagination.
+ ✔ Profile page must have a pagination for the list of status. @done (17-05-29 03:47)
+   ✔ This pagination will show the dates instead of page numbers. Eg. "1 Apr '17", "2 Apr '17", "4 Apr '17”. @done (17-05-29 03:47)
+   ✔ The profile page with show the first page of the pagination by default. @done (17-05-29 03:47)
+   ✔ The pagination button will show the status of that date (pagination button) on click. @done (17-05-29 03:47)
+   ✔ If there is not status in a particular date for a particular user then that date will not be shown in the pagination. @done (17-05-29 03:47)
 
 Bonus Task: (Optional) :
  ☐ Create an API to serve user's public statuses in paginated format.

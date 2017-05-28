@@ -42,7 +42,7 @@
     </section>
 
     <section>
-        @if ( ! $statuses->count())
+        @if ( ! $user->hasStatus())
             <h2 class="grey-text text-center">Looks like you haven't shared anything yet!</h2>
         @else
             @foreach ($statuses as $status)
@@ -61,23 +61,7 @@
                 </div><!-- /.stat-block -->
             @endforeach
 
-            <nav aria-label="Page navigation" class="text-center">
-                <ul class="pagination">
-                    <li>
-                      <a href="#" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                      </a>
-                    </li>
-                    <li><a href="#">1 Apr '17</a></li>
-                    <li><a href="#">2 Apr '17</a></li>
-                    <li><a href="#">3 Apr '17</a></li>
-                    <li>
-                      <a href="#" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                      </a>
-                    </li>
-                </ul>
-            </nav><!-- /pagination -->
+            {{ $paginator->make() }}
 
         @endif
     </section><!-- /.row -->

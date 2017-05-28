@@ -16,16 +16,22 @@
 
 // body,
 body {
-    background: #f0f0f0;
+    background: #fafafa;
 }
 .welcome-layout {
     background-image: url(https://unsplash.it/1800/1600?image=1006);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 100% 25%;
+    .site-footer p {
+        color: #fafafa !important;
+    }
 }
 .main-layout {
     padding-top: 80px;
+}
+.site-footer {
+    margin-top: 40px;
 }
 
 // global
@@ -44,10 +50,15 @@ body {
             display: inline-block;
             padding: 5px 14px;
             background-color: #fafafa;
-            border: 1px solid #ddd;
+            border: 1px solid #aaa;
             border-radius: 15px;
             cursor: not-allowed;
         }
+    }
+}
+.error404 {
+    h1 {
+        font-weight: bold;
     }
 }
 
@@ -66,7 +77,7 @@ body {
 
 $stat-block-img-width: 60px;
 .stat-block {
-    box-shadow: 0 1px 1px rgba(0, 0, 0, .15);
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
     .pull-left {
         width: $stat-block-img-width;
         min-width: $stat-block-img-width;

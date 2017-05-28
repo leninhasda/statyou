@@ -7,7 +7,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="white-text navbar-brand" href="#"><b>Stat<strike>us</strike> You</b></a>
+            <a class="white-text navbar-brand" href="{{ url('/') }}"><b>Stat<strike>us</strike> You</b></a>
         </div>
         @if (! Auth::guest())
             <ul class="nav navbar-nav navbar-right main-menu">

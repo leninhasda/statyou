@@ -28,7 +28,7 @@
         <div class="container container-size-950">
             <div class="row">
                 <div class="col-sm-12">
-                    <h1 class="white-text"><b>Stat<del>us</del> You</b></h1>
+                    <h1><a href="{{ url('/') }}" class="white-text"><b>Stat<del>us</del> You</b></a></h1>
                 </div>
             </div>
 

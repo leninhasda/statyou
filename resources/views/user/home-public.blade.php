@@ -3,7 +3,7 @@
 @section('content')
 
     <section>
-        @if ( ! $statuses->count())
+        @if ( ! $user->hasStatus())
             <h2 class="grey-text text-center">Looks like user hasn't shared anything yet!</h2>
         @else
             @foreach ($statuses as $status)
@@ -26,11 +26,13 @@
                 </div><!-- /.stat-block -->
             @endforeach
 
+            {{ $paginator->make() }}
+
         @endif
     </section><!-- /.row -->
 
 
-{{ $paginator->make() }}
+
 
 @endsection
 

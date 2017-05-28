@@ -9,6 +9,7 @@ use App\Helpers\Paginator;
 use Auth;
 use Hash;
 use Validator;
+use Carbon\Carbon;
 
 class ProfileController extends Controller
 {
@@ -22,12 +23,30 @@ class ProfileController extends Controller
         $this->middleware('auth')->except('user');
     }
 
-    public function home()
+    public function home(Request $request)
     {
         $user = Auth::user();
-        $statuses = $user->statuses()->orderBy('created_at', 'desc')->get();
+        $date = $request->get('date');
 
-        return view('user.home', compact('statuses', 'user'));
+        if ( ! $user->hasStatus()) {
+            $statuses = [];
+        }
+        else {
+            if ( ! $date ) {
+                $date = $user->getLastStatusDate();
+            }
+            else {
+                $date = new Carbon($date);
+            }
+
+            $statuses = $user->statusOfDate($date);
+            $allOtherDates = Status::getAllDate($user->id);
+            $paginator = new Paginator($allOtherDates, $date, [
+                    'url' => $request->path()
+                ]);
+        }
+
+        return view('user.home', compact('statuses', 'user', 'paginator'));
     }
 
     public function me()
@@ -50,51 +69,82 @@ class ProfileController extends Controller
         ];
 
         $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails() ) {
+            return redirect()->back()->withErrors($validator->errors());
+        }
 
-        if ( ! $validator->fails() ) {
-
-            $user = Auth::user();
-            $user->first_name = $request->input('first_name', $user->first_name);
-            $user->last_name = $request->input('last_name', $user->last_name);
-            $user->email = $request->input('email', $user->email);
-
-            if ( $request->has('password') && ! $request->has('old_password') ) {
-                $request->session()->flash('msg.level', 'danger');
-                $request->session()->flash('msg.content', 'Old password is required to set new password');
-
-                return redirect()->back();
-            }
-
-            if ( $request->has('password') && $request->has('old_password') ) {
-                $old_password = $request->input('old_password');
-                if (Hash::check($old_password, $user->password)) {
-                    $user->password = Hash::make($request->input('password'));
-                }
-                else {
-                    $request->session()->flash('msg.level', 'danger');
-                    $request->session()->flash('msg.content', 'Old password does not match!');
-
-                    return redirect()->back();
-                }
-            }
-
-            $user->save();
-            $request->session()->flash('msg.level', 'success');
-            $request->session()->flash('msg.content', 'Change saved!');
+        if ( $request->has('password') && ! $request->has('old_password') ) {
+            $request->session()->flash('msg.level', 'danger');
+            $request->session()->flash('msg.content', 'Old password is required to set new password');
 
             return redirect()->back();
         }
-        else {
-            return redirect()->back()->withErrors($validator->errors());
+
+        $user = Auth::user();
+
+        if ( $request->has('password') && $request->has('old_password') ) {
+            $old_password = $request->input('old_password');
+            if (Hash::check($old_password, $user->password)) {
+                $user->password = Hash::make($request->input('password'));
+            }
+            else {
+                $request->session()->flash('msg.level', 'danger');
+                $request->session()->flash('msg.content', 'Old password does not match!');
+
+                return redirect()->back();
+            }
         }
+
+        $user->first_name = $request->input('first_name', $user->first_name);
+        $user->last_name = $request->input('last_name', $user->last_name);
+        $user->email = $request->input('email', $user->email);
+        $user->save();
+
+        $request->session()->flash('msg.level', 'success');
+        $request->session()->flash('msg.content', 'Change saved!');
+
+        return redirect()->back();
     }
 
-    public function user($username)
+    public function user(Request $request, $username)
     {
         $user = User::where('username', $username)->first();
-        // dd($user);
-        $statuses = $user->statuses()->orderBy('created_at', 'desc')->get();
-        $paginator = new Paginator(['today', 'yesterday', '3 days ago'], 'yesterday');
+        $date = $request->get('date');
+
+        if ( ! $user) {
+            return view('errors.404', ['user' => Auth::user()]);
+        }
+
+        if ( ! $user->hasStatus()) {
+            $statuses = [];
+        }
+        else {
+            if ( ! $date ) {
+                if (Auth::guest()) {
+                    $date = $user->getLastPublicStatusDate();
+                }
+                else {
+                    $date = $user->getLastStatusDate();
+                }
+            }
+            else {
+                // check for date validity
+                $date = new Carbon($date);
+            }
+
+            if (Auth::guest()) {
+                $statuses = $user->publicStatusOfDate($date);
+                $allOtherDates = Status::getAllPublicDate($user->id);
+            }
+            else {
+                $statuses = $user->statusOfDate($date);
+                $allOtherDates = Status::getAllDate($user->id);
+            }
+            // dd($allOtherDates);
+            $paginator = new Paginator($allOtherDates, $date, [
+                    'url' => $request->path()
+                ]);
+        }
 
         return view('user.home-public', compact('statuses', 'user', 'paginator'));
     }

@@ -15,6 +15,10 @@ class Paginator {
 
     protected $format = "j M 'y";
 
+    protected $urlFormat = "Y-m-d";
+
+    protected $url = '/';
+
     /**
      * creates a paginator instance
      * @param array     $dates       [description]
@@ -38,6 +42,9 @@ class Paginator {
      */
     public function convertToCarbon($date)
     {
+        if (is_object($date)) {
+            return $date;
+        }
         if (is_string($date)) {
             return new Carbon($date, $this->timeZone);
         }
@@ -60,7 +67,9 @@ class Paginator {
         $data = [
             'items' => $this->items,
             'current' => $this->currentDate,
-            'format' => $this->format
+            'format' => $this->format,
+            'urlFormat' => $this->urlFormat,
+            'url' => $this->url,
         ];
         return new HtmlString(view('pagination', $data)->render());
     }
