@@ -10,7 +10,7 @@
                 <div class="panel stat-block">
                     <div class="panel-body clearfix">
                             <div class="pull-left">
-                                <img src="/images/profile-1.jpg" width="32" alt="" class="img-circle">
+                                <img src="/images/{{ $user->avatar ?: 'profile-2.jpg' }}" width="28" alt="" class="img-circle">
                             </div>
                             <div class="pull-right content">
 

@@ -19,7 +19,7 @@
 
                     <div class="clearfix form-group">
                         <div class="pull-left">
-                            <img src="/images/profile-1.jpg" width="38" alt="" class="img-circle">
+                            <img src="/images/{{ $user->avatar ?: 'profile-2.jpg' }}" width="28" alt="" class="img-circle">
                         </div>
                         <div class="pull-right">
                             <input type="text" name="content" placeholder="Well, state yourself..." class="form-control" required>

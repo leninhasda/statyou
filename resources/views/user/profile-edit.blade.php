@@ -7,7 +7,7 @@
             <div class="panel-body">
                 <div class="row">
                     <div class="col-sm-4">
-                        <img src="{{url('images/profile-1.jpg')}}" alt="" class="img-thumbnail">
+                        <img src="/images/{{ $user->avatar ?: 'profile-2.jpg' }}" width="28" alt="" class="img-circle">
                         <form action="#" class="hide">
                             <label for="" class="btn btn-default btn-avatar">
                                 Change Avatar

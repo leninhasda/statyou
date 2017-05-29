@@ -7,7 +7,7 @@
                 <ul class="nav nav-pills pull-right visible-xs">
                     <li>
                         <a href="{{ route('user.profile') }}">
-                            <img src="/images/profile-1.jpg" width="28" alt="" class="img-circle">
+                            <img src="/images/{{ $user->avatar ?: 'profile-2.jpg' }}" width="28" alt="" class="img-circle">
                         </a>
                     </li>
                     <li>
@@ -34,7 +34,7 @@
             <ul class="nav navbar-nav navbar-right main-menu hidden-xs">
                 <li>
                     <a href="{{ route('user.profile') }}">
-                        <img src="/images/profile-1.jpg" width="28" alt="" class="img-circle">
+                        <img src="/images/{{ $user->avatar ?: 'profile-2.jpg' }}" width="28" alt="" class="img-circle">
                         &nbsp;{{ ucfirst($user->first_name) }}
                     </a>
                 </li>

@@ -6,7 +6,7 @@
             <div class="panel-body">
                 <div class="row">
                     <div class="col-sm-4"   >
-                        <img src="images/profile-1.jpg" alt="" class="img-thumbnail">
+                        <img src="/images/{{ $user->avatar ?: 'profile-2.jpg' }}" width="28" alt="" class="img-circle">
                     </div>
                     <div class="col-sm-8">
                         <a href="{{url('profile/edit')}}" class="btn btn-primary pull-right">Edit</a>
