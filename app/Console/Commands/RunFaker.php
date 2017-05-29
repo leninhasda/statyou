@@ -4,6 +4,11 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 
+use App\User;
+use App\Status;
+use Faker\Factory as Faker;
+use Carbon\Carbon;
+
 class RunFaker extends Command
 {
     /**
@@ -38,16 +43,53 @@ class RunFaker extends Command
     public function handle()
     {
         $this->generateUsers();
+        $this->generateStatus();
     }
 
-    protected function generateUsers()
+    protected function generateUsers($count = 5)
     {
-        $user = new \App\User;
-        $user->first_name = 'Lenin';
-        $user->last_name = 'Hasda';
-        $user->username = 'lenin';
-        $user->email = 'lenin@hasda.me';
-        $user->password = \Hash::make('password');
-        $user->save();
+        $faker = Faker::create();
+
+        $emails = [];
+        for($i = 0; $i < $count; $i++) {
+            $email = $faker->email;
+            list($first_name) = explode('@', $email);
+            $last_name = $faker->lastName;
+            $username = strtolower($first_name);
+            $password = \Hash::make('password');
+            $emails[] = $email;
+
+            User::create([
+                'first_name'    => $first_name,
+                'last_name'     => $last_name,
+                'username'      => $username,
+                'email'         => $email,
+                'password'      => $password,
+            ]);
+        }
+
+        echo "Following users have been created with default password as 'password'".PHP_EOL;
+        foreach ($emails as $email) {
+            echo $email.PHP_EOL;
+        }
+    }
+
+    public function generateStatus($count = 1000)
+    {
+        $faker = Faker::create();
+        $user_ids = User::pluck('id');
+
+        for ($i = 0; $i < $count; $i++) {
+            $days = ['today', 'a day ago', '2 days ago', '3 days ago', '4 days ago', '5 days ago', '6 days ago'];
+            $date = new Carbon($faker->randomElement($days));
+
+            Status::create([
+                'user_id' => $user_ids->random(),
+                'content' => $faker->text(100),
+                'type' => (string) $faker->randomElement([Status::Public, Status::Private]),
+                'created_at' => $date->format('Y-m-d h:m:i'),
+                'updated_at' => $date->format('Y-m-d h:m:i'),
+            ]);
+        }
     }
 }

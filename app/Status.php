@@ -12,7 +12,9 @@ class Status extends Model
     const Public = 1;
     const Private = 0;
 
-    protected $fillable = ['user_id', 'content', 'type'];
+    protected $fillable = ['user_id', 'content', 'type',
+        'created_at', 'updated_at' // for faker purpose
+    ];
 
     // public static function firstOnes($user_id)
     // {
