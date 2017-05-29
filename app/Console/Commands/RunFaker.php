@@ -69,12 +69,14 @@ class RunFaker extends Command
         }
 
         echo "Following users have been created with default password as 'password'".PHP_EOL;
+        echo "".PHP_EOL;
         foreach ($emails as $email) {
-            echo $email.PHP_EOL;
+            echo " ".$email.PHP_EOL;
         }
+        echo "".PHP_EOL;
     }
 
-    public function generateStatus($count = 1000)
+    public function generateStatus($count = 500)
     {
         $faker = Faker::create();
         $user_ids = User::pluck('id');
