@@ -9,6 +9,8 @@ Build a small Laravel project with following features -:
    ✔ The profile page with show the first page of the pagination by default. @done (17-05-29 03:47)
    ✔ The pagination button will show the status of that date (pagination button) on click. @done (17-05-29 03:47)
    ✔ If there is not status in a particular date for a particular user then that date will not be shown in the pagination. @done (17-05-29 03:47)
+ ☐ add avatar upload feature @created(17-06-01 08:33)
+ ☐ add search functionality @created(17-06-01 08:36)
 
 Bonus Task: (Optional) :
  ✔ Create an API to serve user's public statuses in paginated format. @done (17-05-29 05:21)
