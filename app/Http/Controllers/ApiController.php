@@ -10,7 +10,13 @@ use Carbon\Carbon;
 
 class ApiController extends Controller
 {
-    //
+    /**
+     * main api end point
+     *
+     * @param  Request $request
+     * @param  string  $username
+     * @return mixed
+     */
     public function index(Request $request, $username)
     {
         $user = User::where('username', $username)->first();
@@ -40,8 +46,6 @@ class ApiController extends Controller
             $paginator = new Paginator($allOtherDates, $date, [
                     'url' => $request->path()
                 ]);
-
-            // return $paginator->currentDate;
         }
 
         return response()->json([
@@ -55,6 +59,12 @@ class ApiController extends Controller
         ]);
     }
 
+    /**
+     * generates pagination for api
+     * @param  string $url
+     * @param  Paginator $paginator
+     * @return mixed
+     */
     protected function makePagination($url, $paginator)
     {
         $current = $this->makeLink($url, $paginator->currentDate);
@@ -70,9 +80,14 @@ class ApiController extends Controller
         ];
     }
 
+    /**
+     * makes single link item for api pagination
+     * @param  string $url
+     * @param  Carbon $date
+     * @return array
+     */
     protected function makeLink($url, $date)
     {
-        // dd($date);
         return [
             'text' => $date->format("j M 'y"),
             'link' => $url.'?date='.$date->format("Y-m-d")

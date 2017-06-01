@@ -13,10 +13,6 @@ class HomeController extends Controller
      */
     public function welcome()
     {
-        if( ! \Auth::guest() ) {
-            return redirect()->route('user.profile');
-        }
 
-        return view('welcome');
     }
 }

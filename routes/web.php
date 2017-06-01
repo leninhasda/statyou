@@ -15,8 +15,12 @@
 Auth::routes();
 
 // done
-Route::get('/', 'HomeController@welcome')
-    ->name('welcome');
+Route::get('/', function(){
+    if ( ! \Auth::guest()) {
+        return redirect()->route('user.profile');
+    }
+    return view('welcome');
+})->name('welcome');
 
 //
 Route::get('/home', 'ProfileController@home')
