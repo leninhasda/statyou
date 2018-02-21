@@ -11,6 +11,7 @@ Build a small Laravel project with following features -:
    ✔ If there is not status in a particular date for a particular user then that date will not be shown in the pagination. @done (17-05-29 03:47)
  ☐ add avatar upload feature @created(17-06-01 08:33)
  ☐ add search functionality @created(17-06-01 08:36)
+ ☐ add test @created(17-06-01 11:28)
 
 Bonus Task: (Optional) :
  ✔ Create an API to serve user's public statuses in paginated format. @done (17-05-29 05:21)
